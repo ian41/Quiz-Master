@@ -1,0 +1,16 @@
+nav.navbar.navbar-inverse
+  .container
+    .navbar-header
+      button.navbar-toggle.collapsed aria-expanded="false" data-target="#bs-example-navbar-collapse-1" data-toggle="collapse" type="button"
+        span.icon-bar
+        span.icon-bar
+        span.icon-bar
+      a.navbar-brand href="#" Quiz Master
+    #bs-example-navbar-collapse-1.collapse.navbar-collapse
+      ul.nav.navbar-nav.navbar-right
+        li = link_to "Home", home_index_url
+        li = link_to "List of Quiz", quizzes_url
+        - if current_user
+          -if current_user.is_admin?
+            li = link_to "Create Quiz", list_admin_quizzes_url
+          li = link_to "Logout", destroy_user_session_path, :method => :delete

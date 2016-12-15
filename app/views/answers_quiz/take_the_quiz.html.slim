@@ -1,0 +1,24 @@
+h2 = @quiz.name
+= form_for @take_the_quiz, :url => url_for(controller: 'answers_quiz', action: 'answer_the_quiz'), :html => { :class => 'form-horizontal' } do |f|
+  -if @take_the_quiz.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@quiz.errors.count, "error")} prohibited this quiz from being saved:"
+      ul
+
+        -@take_the_quiz.errors.full_messages.each do |message|
+          li = message
+  .form-group
+    = f.label "Question", class:'col-sm-3 control-label'
+    .col-sm-6
+      = raw(@quiz.question)
+      = f.hidden_field :question, :value => @quiz.question
+      = f.hidden_field :name, :value => @quiz.name
+
+  .form-group
+    = f.label "Answer", class:'col-sm-3 control-label'
+    .col-sm-6
+      = f.text_field :answer, autofocus: true, class:'form-control'
+      = f.hidden_field :quiz_id, :value => @quiz.id
+  .form-group
+    .col-sm-2.col-sm-push-3
+      .actions = f.submit class:'btn btn-primary'

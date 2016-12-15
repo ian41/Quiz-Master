@@ -1,0 +1,22 @@
+h1 = "hi " + @user.username
+
+-if @user.quiz_records.empty?
+  p you are not yet participate in any quiz
+-else
+  h1 List of Quiz That you are participated
+
+  table.table.table-striped
+    thead
+      tr
+        th #
+        th Quiz Name
+        th result
+
+    tbody
+      -@user.quiz_records.each_with_index do |quiz, index|
+        tr
+          td = (index + 1)
+          td = quiz.name
+          td = quiz.result? ? 'correct Answer' : 'Incorrect Answer'
+
+

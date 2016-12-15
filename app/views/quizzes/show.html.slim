@@ -1,0 +1,11 @@
+h2 = @quiz.name
+.panel.panel-default
+  .panel-body
+    | Question:
+    br
+    = raw(@quiz.question)
+  .panel-body
+    | Answer:
+    br
+    = @quiz.answer
+

@@ -1,0 +1,16 @@
+h2 Your Result
+.panel.panel-default
+  .panel-body
+    | Question:
+    br
+    = raw(@quiz_record.question)
+  .panel-body
+    | Your Answer:
+    br
+    = @quiz_record.answer
+    -if @quiz_record.result?
+      .alert.alert-success role="alert" correct Answer
+    -else
+      .alert.alert-danger role="alert" Incorrect Answer
+
+

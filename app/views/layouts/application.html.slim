@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+html
+  head
+    title QuizMaster
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = javascript_include_tag Ckeditor.cdn_url
+    = csrf_meta_tags
+
+  body
+    = render 'layouts/navbar'
+    .container
+      -if notice
+        .alert.alert-success
+          .container
+            = notice
+      -if alert
+        .alert.alert-danger
+          .container
+            = alert
+      = yield

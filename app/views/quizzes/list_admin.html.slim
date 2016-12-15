@@ -1,0 +1,20 @@
+h1 List of Quiz
+
+p = link_to 'Add new quiz', new_quiz_path
+
+table.table.table-striped
+  thead
+    tr
+      th #
+      th Quiz Name
+      th
+
+  tbody
+    -@quizzes.each_with_index do |quiz, index|
+      tr
+        td = (index + 1)
+        td = quiz.name
+        td
+          = link_to "Update ", edit_quiz_url(quiz.id)
+          = link_to " Delete", quiz, method: :delete, data: { confirm: 'Are you sure?' }
+
